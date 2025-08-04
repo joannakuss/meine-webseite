@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willkommen!</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #f8f9fa, #e0e0e0);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 14px 28px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #spielbereich {
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #ffffffcc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            width: 100px;
+            margin-top: 10px;
+        }
+
+        #spielnachricht {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 15px 0;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Willkommen auf meiner Seite!</h1>
+    </header>
+
+    <main>
+        <p>Das ist ein modernes Beispiel für eine einfache, schöne Webseite mit HTML, CSS und JavaScript.</p>
+
+        <img src="https://via.placeholder.com/400x250.png?text=Beispielbild" alt="Beispielbild">
+
+        <br><br>
+
+        <button onclick="zeigeNachricht()">Klick mich!</button>
+
+        <!-- Mini-Game -->
+        <div id="spielbereich">
+            <h2>🎯 Mini-Spiel: Rate die Zahl</h2>
+            <p>Ich denke an eine Zahl zwischen 1 und 20. Kannst du sie erraten?</p>
+            <input type="number" id="benutzereingabe" min="1" max="20">
+            <br>
+            <button onclick="rateZahl()">Raten</button>
+            <div id="spielnachricht"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 Deine Webseite · Alle Rechte vorbehalten
+    </footer>
+
+    <script>
+        function zeigeNachricht() {
+            alert("Danke fürs Klicken! 😊");
+        }
+
+        let zufallszahl = Math.floor(Math.random() * 20) + 1;
+        let versuche = 0;
+
+        function rateZahl() {
+            const eingabe = document.getElementById("benutzereingabe").value;
+            const nachricht = document.getElementById("spielnachricht");
+            const zahl = parseInt(eingabe);
+
+            if (isNaN(zahl) || zahl < 1 || zahl > 20) {
+                nachricht.textContent = "Bitte gib eine gültige Zahl zwischen 1 und 20 ein.";
+                nachricht.style.color = "red";
+                return;
+            }
+
+            versuche++;
+
+            if (zahl === zufallszahl) {
+                nachricht.textContent = `🎉 Richtig! Du hast die Zahl in ${versuche} Versuch(en) erraten. Starte ein neues Spiel mit F5.`;
+                nachricht.style.color = "green";
+            } else if (zahl < zufallszahl) {
+                nachricht.textContent = "❌ Zu niedrig. Versuch es nochmal!";
+                nachricht.style.color = "orange";
+            } else {
+                nachricht.textContent = "❌ Zu hoch. Versuch es nochmal!";
+                nachricht.style.color = "orange";
+            }
+        }
+    </script>
+
+</body>
+</html>
