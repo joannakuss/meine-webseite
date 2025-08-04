@@ -49,12 +49,13 @@
             margin-bottom: 30px;
         }
 
-        img {
+        img.kuhbild {
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             border-radius: 16px;
+            margin: 30px auto;
+            display: block;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
         }
 
         button {
@@ -99,76 +100,4 @@
         footer {
             background-color: #f1f1f1;
             padding: 15px 0;
-            text-align: center;
-            color: #666;
-            font-size: 14px;
-            border-top: 1px solid #ccc;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Willkommen auf meiner Seite!</h1>
-    </header>
-
-    <main>
-        <p>Das ist ein modernes Beispiel für eine einfache, schöne Webseite mit HTML, CSS und JavaScript.</p>
-
-        <img src="https://via.placeholder.com/400x250.png?text=Beispielbild" alt="Beispielbild">
-
-        <br><br>
-
-        <button onclick="zeigeNachricht()">Klick mich!</button>
-
-        <!-- Mini-Game -->
-        <div id="spielbereich">
-            <h2>🎯 Mini-Spiel: Rate die Zahl</h2>
-            <p>Ich denke an eine Zahl zwischen 1 und 20. Kannst du sie erraten?</p>
-            <input type="number" id="benutzereingabe" min="1" max="20">
-            <br>
-            <button onclick="rateZahl()">Raten</button>
-            <div id="spielnachricht"></div>
-        </div>
-    </main>
-
-    <footer>
-        &copy; 2025 Deine Webseite · Alle Rechte vorbehalten
-    </footer>
-
-    <script>
-        function zeigeNachricht() {
-            alert("Danke fürs Klicken! 😊");
-        }
-
-        let zufallszahl = Math.floor(Math.random() * 20) + 1;
-        let versuche = 0;
-
-        function rateZahl() {
-            const eingabe = document.getElementById("benutzereingabe").value;
-            const nachricht = document.getElementById("spielnachricht");
-            const zahl = parseInt(eingabe);
-
-            if (isNaN(zahl) || zahl < 1 || zahl > 20) {
-                nachricht.textContent = "Bitte gib eine gültige Zahl zwischen 1 und 20 ein.";
-                nachricht.style.color = "red";
-                return;
-            }
-
-            versuche++;
-
-            if (zahl === zufallszahl) {
-                nachricht.textContent = `🎉 Richtig! Du hast die Zahl in ${versuche} Versuch(en) erraten. Starte ein neues Spiel mit F5.`;
-                nachricht.style.color = "green";
-            } else if (zahl < zufallszahl) {
-                nachricht.textContent = "❌ Zu niedrig. Versuch es nochmal!";
-                nachricht.style.color = "orange";
-            } else {
-                nachricht.textContent = "❌ Zu hoch. Versuch es nochmal!";
-                nachricht.style.color = "orange";
-            }
-        }
-    </script>
-
-</body>
-</html>
+            tex
